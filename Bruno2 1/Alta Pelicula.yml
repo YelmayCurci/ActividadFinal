@@ -1,0 +1,29 @@
+info:
+  name: Alta Pelicula
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:8080/ActividadFinal/SvPeliculaCrear
+  body:
+    type: form-urlencoded
+    data:
+      - name: titulo
+        value: El c
+      - name: genero
+        value: Terror
+      - name: anio
+        value: "2013"
+      - name: duracion
+        value: "1.52"
+      - name: director
+        value: Jame
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

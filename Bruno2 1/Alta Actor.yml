@@ -1,0 +1,31 @@
+info:
+  name: Alta Actor
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/ActividadFinal/SvActorCrear
+  body:
+    type: form-urlencoded
+    data:
+      - name: nombre
+        value: hola
+      - name: apellido
+        value: djssk
+      - name: edad
+        value: "26"
+      - name: nacionalidad
+        value: mexico
+      - name: cantPremios
+        value: "4"
+      - name: peliculaId
+        value: "203"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

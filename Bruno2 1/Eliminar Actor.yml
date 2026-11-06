@@ -1,0 +1,31 @@
+info:
+  name: Eliminar Actor
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: http://localhost:8080/ActividadFinal/SvActorEliminar
+  body:
+    type: form-urlencoded
+    data:
+      - name: id
+        value: "102"
+      - name: nombre
+        value: olaaa
+      - name: apellido
+        value: plaaa
+      - name: edad
+        value: "4"
+      - name: nacionalidad
+        value: hdfhgdg
+      - name: cantPremios
+        value: "5"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

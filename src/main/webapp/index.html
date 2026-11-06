@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto Actividad Final</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header>
+  <h1>Proyecto Actividad Final</h1>
+</header>
+<main>
+  <h2>Pantallas</h2>
+  <p>
+    <a class="boton" href="SvPeliculaListar">Películas</a>
+    <a class="boton" href="SvActorListar">Actores</a>
+  </p>
+
+  <h2>Buscador</h2>
+  <form class="formulario" action="SvBuscar" method="get">
+    <label>
+      Buscar por
+      <select name="tipo">
+        <option value="pelicula">Película</option>
+        <option value="actor">Actor</option>
+      </select>
+    </label>
+
+    <label>
+      Texto
+      <input type="text" name="texto" required>
+    </label>
+
+    <button type="submit">Buscar</button>
+  </form>
+</main>
+<footer>Carina Yelma y Nicole Curci — Instituto Técnico Ntra. Sra. de Fátima (A-893)</footer>
+</body>
+</html>
