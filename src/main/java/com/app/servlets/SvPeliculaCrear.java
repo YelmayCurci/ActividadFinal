@@ -38,6 +38,13 @@ public class SvPeliculaCrear extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + "/SvPeliculaListar");
 
+            catch (NumberFormatException e) {
+                String msg = URLEncoder.encode(
+                    "La edad debe ser un número",
+                    StandardCharsets.UTF_8
+                );
+                response.sendRedirect("SvActorListar?error=" + msg);
+            
         } catch (Exception e) {
 
             String mensaje = e.getMessage();

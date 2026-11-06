@@ -176,7 +176,7 @@ public class ControladoraLogica {
 		return controlPersis.buscarActoresPorNombre(texto);
 	}
 
-	// BUSCAR PELÍCULAS POR TÍTULO
+	
 	// BUSCAR PELÍCULAS POR TÍTULO
 	public List<Pelicula> buscarPeliculasPorTitulo(String texto) {
 	    return controlPersis.buscarPeliculasPorTitulo(texto);

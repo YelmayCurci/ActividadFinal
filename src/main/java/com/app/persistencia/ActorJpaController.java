@@ -62,7 +62,7 @@ public class ActorJpaController {
 			public List<Actor> buscarTodos() {
 			EntityManager em = getEntityManager();
 			try {
-			// Consulta JPQL: "traeme todos los objetos Artista"
+			// Consulta JPQL
 			return em.createQuery("SELECT a FROM Actor a", Actor.class)
 			.getResultList();
 			} finally {
@@ -97,20 +97,17 @@ public class ActorJpaController {
 
 			        if (actor != null) {
 
-			            // Primero contamos las películas del actor
 			            Long cantidad = em.createQuery(
 			                "SELECT COUNT(p) FROM Pelicula p JOIN p.listaActores a WHERE a.id = :id",
 			                Long.class)
 			                .setParameter("id", id)
 			                .getSingleResult();
 
-			            // Si tiene películas, no lo eliminamos
 			            if (cantidad > 0) {
 			                throw new RuntimeException(
 			                    "No se puede eliminar el actor porque tiene películas asociadas.");
 			            }
-
-			            // Si no tiene películas, lo eliminamos
+			        
 			            em.remove(actor);
 			        }
 

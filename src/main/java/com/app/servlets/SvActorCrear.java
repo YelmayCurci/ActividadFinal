@@ -54,6 +54,13 @@ public class SvActorCrear extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + "/SvActorListar");
 
+            catch (NumberFormatException e) {
+                String msg = URLEncoder.encode(
+                    "La edad debe ser un número",
+                    StandardCharsets.UTF_8
+                );
+                response.sendRedirect("SvActorListar?error=" + msg);
+            
         } catch (Exception e) {
 
             e.printStackTrace();
