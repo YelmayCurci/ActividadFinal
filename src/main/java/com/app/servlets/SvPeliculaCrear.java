@@ -15,6 +15,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 @WebServlet("/SvPeliculaCrear")
+
 public class SvPeliculaCrear extends HttpServlet {
 
     private final ControladoraLogica controladora = new ControladoraLogica();
@@ -38,13 +39,15 @@ public class SvPeliculaCrear extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + "/SvPeliculaListar");
 
-            catch (NumberFormatException e) {
-                String msg = URLEncoder.encode(
-                    "La edad debe ser un número",
-                    StandardCharsets.UTF_8
-                );
-                response.sendRedirect("SvActorListar?error=" + msg);
-            
+        } catch (NumberFormatException e) {
+
+            String msg = URLEncoder.encode(
+                "El año y la duración deben ser números",
+                StandardCharsets.UTF_8
+            );
+
+            response.sendRedirect(request.getContextPath() + "/SvPeliculaListar?error=" + msg);
+
         } catch (Exception e) {
 
             String mensaje = e.getMessage();

@@ -18,61 +18,54 @@ import java.nio.charset.StandardCharsets;
 @WebServlet("/SvActorCrear")
 public class SvActorCrear extends HttpServlet {
 
-    private final ControladoraLogica controladora = new ControladoraLogica();
+	private final ControladoraLogica controladora = new ControladoraLogica();
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
-        try {
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            int edad = Integer.parseInt(request.getParameter("edad"));
-            String nacionalidad = request.getParameter("nacionalidad");
-            int cantPremios = Integer.parseInt(request.getParameter("cantPremios"));
+		try {
+			String nombre = request.getParameter("nombre");
+			String apellido = request.getParameter("apellido");
+			int edad = Integer.parseInt(request.getParameter("edad"));
+			String nacionalidad = request.getParameter("nacionalidad");
+			int cantPremios = Integer.parseInt(request.getParameter("cantPremios"));
+			int peliculaId = Integer.parseInt(request.getParameter("peliculaId"));
 
-            // Recuperamos el ID de la película seleccionada
-            int peliculaId = Integer.parseInt(request.getParameter("peliculaId"));
+			Pelicula pelicula = controladora.buscarUnaPelicula(peliculaId);
 
-            // Buscamos la película en la base de datos
-            Pelicula pelicula = controladora.buscarUnaPelicula(peliculaId);
+			if (pelicula == null) {
+				throw new Exception("La película seleccionada no existe.");
+			}
 
-            if (pelicula == null) {
-                throw new Exception("La película seleccionada no existe.");
-            }
+			Actor actor = new Actor(nombre, apellido, edad, nacionalidad, cantPremios);
 
-            // Creamos el actor
-            Actor actor = new Actor(nombre, apellido, edad, nacionalidad, cantPremios);
+			actor.setPelicula(pelicula);
 
-            // Asignamos la película al actor
-            actor.setPelicula(pelicula);
+			controladora.crearActor(actor);
 
-            // Guardamos el actor
-            controladora.crearActor(actor);
+			response.sendRedirect(request.getContextPath() + "/SvActorListar");
 
-            response.sendRedirect(request.getContextPath() + "/SvActorListar");
+		} catch (NumberFormatException e) {
 
-            catch (NumberFormatException e) {
-                String msg = URLEncoder.encode(
-                    "La edad debe ser un número",
-                    StandardCharsets.UTF_8
-                );
-                response.sendRedirect("SvActorListar?error=" + msg);
-            
-        } catch (Exception e) {
+			String msg = URLEncoder.encode("Los datos numéricos deben ser números válidos", StandardCharsets.UTF_8);
 
-            e.printStackTrace();
+			response.sendRedirect(request.getContextPath() + "/SvActorListar?error=" + msg);
 
-            String mensaje = e.getMessage();
+		} catch (Exception e) {
 
-            if (mensaje == null || mensaje.trim().isEmpty()) {
-                mensaje = "No se pudo crear el actor. Verificá los datos.";
-            }
+			e.printStackTrace();
 
-            response.sendRedirect(request.getContextPath() + "/SvActorListar?error="
-                    + URLEncoder.encode(mensaje, StandardCharsets.UTF_8));
-        }
-    }
+			String mensaje = e.getMessage();
+
+			if (mensaje == null || mensaje.trim().isEmpty()) {
+				mensaje = "No se pudo crear el actor. Verificá los datos.";
+			}
+
+			response.sendRedirect(request.getContextPath() + "/SvActorListar?error="
+					+ URLEncoder.encode(mensaje, StandardCharsets.UTF_8));
+		}
+	}
 }
