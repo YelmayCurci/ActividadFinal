@@ -10,17 +10,17 @@ http:
     type: form-urlencoded
     data:
       - name: nombre
-        value: hola
+        value: Troy
       - name: apellido
-        value: djssk
+        value: Kotsur
       - name: edad
-        value: "26"
+        value: "58"
       - name: nacionalidad
-        value: mexico
+        value: Estados Unidos
       - name: cantPremios
-        value: "4"
+        value: "9"
       - name: peliculaId
-        value: "203"
+        value: "5"
   auth: inherit
 
 settings:

@@ -21,6 +21,8 @@ http:
         value: hdfhgdg
       - name: cantPremios
         value: "5"
+      - name: peliculaId
+        value: ""
   auth: inherit
 
 settings:

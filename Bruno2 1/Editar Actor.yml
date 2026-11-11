@@ -10,16 +10,18 @@ http:
     type: form-urlencoded
     data:
       - name: id
-        value: "102"
+        value: "5"
       - name: nombre
-        value: olaaa
+        value: "Troy "
       - name: apellido
-        value: plaaa
+        value: Kotsur
       - name: edad
-        value: "4"
+        value: "58"
       - name: nacionalidad
-        value: hdfhgdg
+        value: Estado Unidense
       - name: cantPremios
+        value: "9"
+      - name: peliculaId
         value: "5"
   auth: inherit
 
