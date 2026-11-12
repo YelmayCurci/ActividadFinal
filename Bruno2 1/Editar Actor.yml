@@ -12,7 +12,7 @@ http:
       - name: id
         value: "5"
       - name: nombre
-        value: "Troy "
+        value: ""
       - name: apellido
         value: Kotsur
       - name: edad
